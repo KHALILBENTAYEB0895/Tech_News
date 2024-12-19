@@ -21,7 +21,7 @@
             <button class="btn btn-primary btn-block" type="submit">Login</button>
         </div>
     </form>
-    <div class="text-center forgotpass"><a href="forgot-password.html">Forgot your password?</a> </div>
+    <div class="text-center forgotpass"><a href="{{ route('password.request') }}">Forgot your password?</a> </div>
 
 <div class="text-center dont-have">You don't have an account? <a href="{{ route('register') }}">Register</a></div>  
 @endsection
