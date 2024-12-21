@@ -7,7 +7,7 @@
           height="70"
           alt="logo"
         />
-        <span class="logoclass">John Doe</span>
+        <span class="logoclass">{{ Auth::user()->name }}</span>
       </a>
       <a href="index.html" class="logo logo-small">
         <img
@@ -44,7 +44,7 @@
               />
             </div>
             <div class="user-text">
-              <h6>John Doe</h6>
+              <h6>{{ Auth::user()->name }}</h6>
               <p class="text-muted mb-0">Administrateur</p>
             </div>
           </div>
