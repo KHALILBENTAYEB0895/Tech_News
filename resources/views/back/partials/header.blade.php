@@ -29,7 +29,7 @@
           <span class="user-img"
             ><img
               class="rounded-circle"
-              src="{{ asset('back_auth/assets/img/profiles/avatar-01.png') }}"
+              src="{{ asset('back_auth/assets/profile/'.Auth::user()->picture) }}"
               width="31"
               alt="John Doe"
           /></span>
@@ -38,7 +38,7 @@
           <div class="user-header">
             <div class="avatar avatar-sm">
               <img
-                src="{{ asset('back_auth/assets/img/profiles/avatar-01.png') }}"
+                src="{{ asset('back_auth/assets/profile/'.Auth::user()->picture) }}"
                 alt="User Image"
                 class="avatar-img rounded-circle"
               />

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use League\CommonMark\Node\Query\AndExpr;
 
 class ProfileController extends Controller
 {
@@ -32,9 +33,22 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
+        if($request->hasFile('picture')){
+            if(file_exists(public_path('back_auth/assets/profile/'.$request->user()->picture)) AND !empty($request->user()->picture)){
+                unlink(public_path('back_auth/assets/profile/'.$request->user()->picture));
+            }
+            $ext = $request->file('picture')->extension();
+            $file_name = date('YmdHis').'.'.$ext;
+            $request->file('picture')->move(public_path('back_auth/assets/profile/'), $file_name);
+            $request->user()->picture = $file_name;
+        }
+
+        $request->user()->name = $request->name;
+        $request->user()->email = $request->email;
+
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('status', 'Profile updated');
     }
 
     /**

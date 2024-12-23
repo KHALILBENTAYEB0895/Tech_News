@@ -20,7 +20,8 @@
         <div class="profile-header">
             <div class="row align-items-center">
                 <div class="col-auto profile-image">
-                    <a href="#"> <img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-01.png"> </a>
+                    
+                    <a href="#"> <img class="rounded-circle" alt="User Image" src="{{ asset('back_auth/assets/profile/'.Auth::user()->picture) }}"> </a>
                 </div>
                 <div class="col ml-md-n2 profile-user-info">
                     <h4 class="user-name mb-3">{{ Auth::user()->name }}</h4>
@@ -37,6 +38,14 @@
         </div>
         <div class="tab-content profile-tab-cont">
             <div class="tab-pane fade show active" id="per_details_tab">
+                @if(@session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
@@ -66,20 +75,29 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
+                                        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PATCH')
                                             <div class="row form-row">
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label>Name</label>
-                                                        <input type="text" class="form-control" value="{{ Auth::user()->name }}"> </div>
+                                                        <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}"> </div>
                                                 </div>
                                                 
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label>Email</label>
-                                                        <input type="email" class="form-control" value="{{ Auth::user()->email }}"> </div>
+                                                        <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}">
+                                                    </div>
                                                 </div>
-                                                
+
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Photo de Profile </label>
+                                                        <input type="file" name="picture" class="form-control"> 
+                                                    </div>
+                                                </div>
                                                 
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-block">Enregistrer les modifications</button>
