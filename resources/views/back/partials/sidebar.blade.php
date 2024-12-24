@@ -26,7 +26,7 @@
             ></a>
             <ul class="submenu_class" style="display: none">
               <li>
-                <a href="all-categories.html"> Tous les catégories </a>
+                <a href="{{ route('categories.index') }}"> Tous les catégories </a>
               </li>
 
               <li>
