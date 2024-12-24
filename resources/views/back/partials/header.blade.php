@@ -50,7 +50,13 @@
           </div>
           <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
           <a class="dropdown-item" href="settings.html">Paramettre</a>
-          <a class="dropdown-item" href="login.html">Deconnexion</a>
+          <a class="dropdown-item" href="{{ route('logout') }}"
+             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+             Deconnexion
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
         </div>
       </li>
     </ul>

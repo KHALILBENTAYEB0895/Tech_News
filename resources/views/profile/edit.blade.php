@@ -20,25 +20,29 @@
         <div class="profile-header">
             <div class="row align-items-center">
                 <div class="col-auto profile-image">
-                    
-                    <a href="#"> <img class="rounded-circle" alt="User Image" src="{{ asset('back_auth/assets/profile/'.Auth::user()->picture) }}"> </a>
+                    <a href="#">
+                        <img class="rounded-circle" alt="User Image" src="{{ asset('back_auth/assets/profile/'.Auth::user()->picture) }}">
+                    </a>
                 </div>
                 <div class="col ml-md-n2 profile-user-info">
                     <h4 class="user-name mb-3">{{ Auth::user()->name }}</h4>
                     <h6 class="text-muted mt-1">Admin</h6>
                 </div>
-                
             </div>
         </div>
         <div class="profile-menu">
             <ul class="nav nav-tabs nav-tabs-solid">
-                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#per_details_tab">A propos</a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#password_tab">Mot de passe</a> </li>
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#per_details_tab">A propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#password_tab">Mot de passe</a>
+                </li>
             </ul>
         </div>
         <div class="tab-content profile-tab-cont">
             <div class="tab-pane fade show active" id="per_details_tab">
-                @if(@session('status'))
+                @if(session('status'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('status') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -52,7 +56,8 @@
                             <div class="card-body">
                                 <h5 class="card-title d-flex justify-content-between">
                                     <span>Informations Personelles</span>
-                                    <a class="edit-link" data-toggle="modal" href="#edit_personal_details"><i class="fa fa-edit mr-1"></i>Modifier
+                                    <a class="edit-link" data-toggle="modal" href="#edit_personal_details">
+                                        <i class="fa fa-edit mr-1"></i>Modifier
                                     </a>
                                 </h5>
                                 <div class="row">
@@ -72,7 +77,9 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Personal Details</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     <div class="modal-body">
                                         <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
@@ -82,23 +89,21 @@
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label>Name</label>
-                                                        <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}"> </div>
+                                                        <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}">
+                                                    </div>
                                                 </div>
-                                                
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label>Email</label>
                                                         <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}">
                                                     </div>
                                                 </div>
-
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
-                                                        <label>Photo de Profile </label>
-                                                        <input type="file" name="picture" class="form-control"> 
+                                                        <label>Photo de Profile</label>
+                                                        <input type="file" name="picture" class="form-control">
                                                     </div>
                                                 </div>
-                                                
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-block">Enregistrer les modifications</button>
                                         </form>
@@ -107,7 +112,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
             <div id="password_tab" class="tab-pane fade">
@@ -116,17 +120,31 @@
                         <h5 class="card-title">Modifier le mot de passe</h5>
                         <div class="row">
                             <div class="col-md-10 col-lg-6">
-                                <form>
+                                <form action="{{ route('password.update') }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="form-group">
-                                        <label>Ancien mot de passe</label>
-                                        <input type="password" class="form-control"> </div>
+                                        <label>Current Password</label>
+                                        <input type="password" name="current_password" class="form-control @error('current_password') is-invalid @enderror">
+                                        @error('current_password', 'updatePassword')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                     <div class="form-group">
-                                        <label>Nouveau mot de passe</label>
-                                        <input type="password" class="form-control"> </div>
+                                        <label>New Password</label>
+                                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
+                                        @error('password', 'updatePassword')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                     <div class="form-group">
-                                        <label>Confirmer motde passe</label>
-                                        <input type="password" class="form-control"> </div>
-                                    <button class="btn btn-primary" type="submit">Enregistrer les modifications</button>
+                                        <label>Confirm password</label>
+                                        <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror">
+                                        @error('password_confirmation', 'updatePassword')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">Save changes</button>
                                 </form>
                             </div>
                         </div>
