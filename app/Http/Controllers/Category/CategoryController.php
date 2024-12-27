@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('back.category.index');
+        return view('back.category.index', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -28,9 +30,11 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    
     public function store(StoreCategoryRequest $request)
     {
-        //
+        Category::create($request->validated());
+        return redirect()->route('categories.index')->with('success', 'Category created successfully');
     }
 
     /**

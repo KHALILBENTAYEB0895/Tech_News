@@ -37,5 +37,25 @@
     {# Scripts dashboard #}
     @include('back.partials.scripts')
     {# Fin Script Dashboard #}
+
+    @if (session()->get('success'))
+      <script>
+        iziToast.success({
+          title: 'Success',
+          message: '{{ session()->get('success') }}',
+          position: 'topRight'
+        });
+      </script>
+    @endif
+
+    @if (session()->get('error'))
+      <script>
+        iziToast.error({
+          title: 'Error',
+          message: '{{ session()->get('error') }}',
+          position: 'topRight'
+        });
+      </script>
+    @endif
   </body>
 </html>

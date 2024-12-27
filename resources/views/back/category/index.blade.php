@@ -19,6 +19,15 @@
 
 @section('dashboard-content')
 <div class="row">
+    @if (session('success'))
+    <div class="col-lg-12">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="col-sm-12">
         <div class="card card-table">
             <div class="card-body booking_card">
@@ -29,20 +38,27 @@
                                 <th>ID Categorie</th>
                                 <th>Nom</th>
                                 <th>Description</th>
+                                <th>Status</th>
                                 <th class="text-right">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($categories as $category)
                             <tr>
-                                <td>CAT-0001</td>
-                                <td>Nom categorie</td>
-                                <td>Breve description</td>
+                                <td>{{ $category->id }}</td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->description }}</td>
+                                <td>
+                                    <span class="badge badge-pill bg-success inv-badge">{{ $category->isActive == 1 ? 'ENABLE' : 'DISABLE' }}</span>
+                                </td>
                                 <td class="text-right">
                                     <div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                         <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="edit-categorie.html"><i class="fas fa-pencil-alt m-r-5"></i> Modifier</a> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Supprimer</a> </div>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr>  
+                            @endforeach
+                            
                             
                         </tbody>
 
