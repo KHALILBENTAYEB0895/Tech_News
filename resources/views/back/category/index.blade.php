@@ -53,13 +53,20 @@
                                 </td>
                                 <td class="text-right">
                                     <div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="edit-categorie.html"><i class="fas fa-pencil-alt m-r-5"></i> Modifier</a> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Supprimer</a> </div>
+                                        <div class="dropdown-menu dropdown-menu-right"> 
+                                            <a class="dropdown-item" href="{{ route('categories.edit', $category) }}"><i class="fas fa-pencil-alt m-r-5"></i>Edit</a>
+                                            <form action="{{ route('categories.destroy', $category) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="fas fa-trash m-r-5"></i>Delete
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>  
                             @endforeach
-                            
-                            
                         </tbody>
 
     <div id="delete_asset" class="modal fade delete-modal" role="dialog">
