@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Article\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,8 +19,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Category Routes
+// Category Routes
 
 Route::resource('categories', CategoryController::class);
+
+//Article Routes
+
+Route::resource('articles', ArticleController::class);
+
+//Auth Routes
 
 require __DIR__.'/auth.php';
