@@ -34,10 +34,9 @@
                     <div class="form-group">
                     <label>Categorie</label>
                     <select class="form-control" id="sel1" name="category_id">
-                        <option>Categorie 1</option>
-                        <option>Categorie 2</option>
-                        <option>Categorie 3</option>
-                        <option>Categorie 4</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     </select>
                     </div>
                 </div>
@@ -66,11 +65,11 @@
                     <label>Publication</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input" type="radio" id="article_active" name="isActive" value="1" checked>
+                    <input class="form-check-input" type="radio" id="article_active" name="isActive" value="1" checked>
                     <label class="form-check-label" for="article_active">Publish</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input" type="radio" id="article_inactive" name="isActive" value="0">
+                    <input class="form-check-input" type="radio" id="article_inactive" name="isActive" value="0">
                     <label class="form-check-label" for="article_inactive">Do not publish</label>
                     </div>
                 </div>
@@ -80,11 +79,11 @@
                     <label>Shares</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input" type="radio" id="article_share_active" name="isSharable" value="1" checked>
+                    <input class="form-check-input" type="radio" id="article_share_active" name="isSharable" value="1" checked>
                     <label class="form-check-label" for="article_share_active">Shareable</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input" type="radio" id="article_share_inactive" name="isSharable" value="0">
+                    <input class="form-check-input" type="radio" id="article_share_inactive" name="isSharable" value="0">
                     <label class="form-check-label" for="article_share_inactive">Not Shareable</label>
                     </div>
                 </div>
@@ -94,11 +93,11 @@
                         <label>Comment</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input type="checkbox" class="form-check-input" type="radio" id="article_comment_active" name="isComment" value="1" checked>
+                        <input class="form-check-input" type="radio" id="article_comment_active" name="isComment" value="1" checked>
                         <label class="form-check-label" for="article_comment_active">Allowed</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input type="checkbox" class="form-check-input" type="radio" id="article_comment_inactive" name="isComment" value="0">
+                        <input class="form-check-input" type="radio" id="article_comment_inactive" name="isComment" value="0">
                         <label class="form-check-label" for="article_comment_inactive">Not allowed</label>
                     </div>
                 </div>
