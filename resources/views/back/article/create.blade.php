@@ -21,7 +21,7 @@
             <div class="row formtype">
                 <div class="col-md-4">
                     <div class="form-group">
-                    <label>Titre de l'article</label>
+                    <label>Article title</label>
                     <input
                         class="form-control"
                         type="text"
@@ -44,11 +44,11 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                    <label>Uploader une image</label>
+                    <label>Upload an image</label>
                     <div class="custom-file mb-3">
                         <input type="file" class="custom-file-input" id="customFile" name="image"/>
                         <label class="custom-file-label" for="customFile"
-                        >Choisir une image</label
+                        >Choose an image</label
                         >
                     </div>
                     </div>
@@ -67,42 +67,42 @@
                     </div>
                     <div class="form-check form-check-inline">
                     <input type="checkbox" class="form-check-input" type="radio" id="article_active" name="isActive" value="1" checked>
-                    <label class="form-check-label" for="article_active">Publier</label>
+                    <label class="form-check-label" for="article_active">Publish</label>
                     </div>
                     <div class="form-check form-check-inline">
                     <input type="checkbox" class="form-check-input" type="radio" id="article_inactive" name="isActive" value="0">
-                    <label class="form-check-label" for="article_inactive">Ne pas publier</label>
+                    <label class="form-check-label" for="article_inactive">Do not publish</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
-                    <label>Partages</label>
+                    <label>Shares</label>
                     </div>
                     <div class="form-check form-check-inline">
                     <input type="checkbox" class="form-check-input" type="radio" id="article_share_active" name="isSharable" value="1" checked>
-                    <label class="form-check-label" for="article_share_active">Partageable</label>
+                    <label class="form-check-label" for="article_share_active">Shareable</label>
                     </div>
                     <div class="form-check form-check-inline">
                     <input type="checkbox" class="form-check-input" type="radio" id="article_share_inactive" name="isSharable" value="0">
-                    <label class="form-check-label" for="article_share_inactive">Non Partageable</label>
+                    <label class="form-check-label" for="article_share_inactive">Not Shareable</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Commentaires</label>
+                        <label>Comment</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input type="checkbox" class="form-check-input" type="radio" id="article_comment_active" name="isComment" value="1" checked>
-                        <label class="form-check-label" for="article_comment_active">Autorise</label>
+                        <label class="form-check-label" for="article_comment_active">Allowed</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input type="checkbox" class="form-check-input" type="radio" id="article_comment_inactive" name="isComment" value="0">
-                        <label class="form-check-label" for="article_comment_inactive">Non autorise</label>
+                        <label class="form-check-label" for="article_comment_inactive">Not allowed</label>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary buttonedit1">Enregistrer l'article</button>  
+                <button type="button" class="btn btn-primary buttonedit1">Save the article</button>  
             </div>
         </form>
     </div>

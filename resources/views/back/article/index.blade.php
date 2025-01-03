@@ -7,7 +7,7 @@
     <div class="col">
         <div class="mt-5">
             <h4 class="card-title float-left mt-2">Articles</h4>
-            <a href="{{ route('articles.create') }}" class="btn btn-primary float-right veiwbutton ">Ajouter un article</a>
+            <a href="{{ route('articles.create') }}" class="btn btn-primary float-right veiwbutton ">Add an article</a>
         </div>
     </div>
 </div>
@@ -23,14 +23,14 @@
                         <thead>
                             <tr>
                                 <th>ID Article</th>
-                                <th>Image</th>
-                                <th>Titre</th>
-                                <th>Categorie</th>
+                                <th>Picture</th>
+                                <th>Title</th>
+                                <th>Category</th>
                                 <th>Date</th>
                                 <th>Publication</th>
-                                <th>Partage</th>
-                                <th>Commentaires</th>
-                                <th>Auteur</th>
+                                <th>Share</th>
+                                <th>Comment</th>
+                                <th>Author</th>
                                 <th class="text-right">Actions</th>
                             </tr>
                         </thead>
@@ -38,11 +38,11 @@
                             <tr>
                                 <td>ART-0001</td>
                                 <td></td>
-                                <td>Titre de l'article</td>
+                                <td>Article Title</td>
                                 <td>Categorie</td>
                                 <td>21-03-2020</td>
                                 <td>
-                                    <div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">Publié</a> </div>
+                                    <div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">Published</a> </div>
                                 </td>
                                 <td>
                                 <div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> </div>
@@ -63,12 +63,12 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right"> 
                                             <a class="dropdown-item" href="edit-article.html">
-                                                <i class="fas fa-pencil-alt m-r-5"></i> Voir
+                                                <i class="fas fa-pencil-alt m-r-5"></i> See
                                             </a>
                                             <a class="dropdown-item" href="edit-article.html">
-                                                <i class="fas fa-pencil-alt m-r-5"></i> Modifier
+                                                <i class="fas fa-pencil-alt m-r-5"></i> Edit
                                             </a> 
-                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Supprimer
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete
                                             </a> 
                                         </div>
                                     </div>
