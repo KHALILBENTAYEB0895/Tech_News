@@ -7,7 +7,7 @@
     <div class="col">
         <div class="mt-5">
             <h4 class="card-title float-left mt-2">Articles</h4>
-            <a href="add-booking.html" class="btn btn-primary float-right veiwbutton ">Ajouter un article</a>
+            <a href="{{ route('articles.create') }}" class="btn btn-primary float-right veiwbutton ">Ajouter un article</a>
         </div>
     </div>
 </div>

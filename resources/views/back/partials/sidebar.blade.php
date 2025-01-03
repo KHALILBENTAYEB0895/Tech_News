@@ -16,7 +16,7 @@
             ></a>
             <ul class="submenu_class" style="display: none">
               <li><a href="{{ route('articles.index') }}"> Tous les articles </a></li>
-              <li><a href="add-article.html"> Ajouter un article </a></li>
+              <li><a href="{{ route('articles.create') }}"> Ajouter un article </a></li>
             </ul>
           </li>
           <li class="submenu">
