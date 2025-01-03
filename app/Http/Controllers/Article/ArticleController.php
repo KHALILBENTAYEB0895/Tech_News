@@ -22,7 +22,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.article.create');
     }
 
     /**
