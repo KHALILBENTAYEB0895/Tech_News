@@ -13,11 +13,8 @@
 @section('dashboard-content')
 <div class="row">
     <div class="col-lg-12">
-        <form action="{{ isset($article) ? route('articles.update', $article) : route('articles.store') }}" method="POST">
+        <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @if (isset($article))
-            @method('PUT')
-        @endif
             <div class="row formtype">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -26,7 +23,6 @@
                         class="form-control"
                         type="text"
                         name="title"
-                        value="{{ old('title') }}"
                     />
                     </div>
                 </div>
@@ -101,7 +97,7 @@
                         <label class="form-check-label" for="article_comment_inactive">Not allowed</label>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary buttonedit1">Save the article</button>  
+                <button type="submit" class="btn btn-primary buttonedit1">Save the article</button>  
             </div>
         </form>
     </div>
