@@ -7,6 +7,8 @@ use App\Http\Requests\Article\StoreArticleRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\UpdateArticleRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -32,13 +34,21 @@ class ArticleController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreArticleRequest $request)
-    {
-        //
-    }
+    {   $imagePath = null;
+        
+        if($request->hasFile('image')){
+            $imagePath = $request->file('image')->store('articles', 'public');
+        }
+            
+        Article::create($request->validated() +[
+            'image' => $imagePath,
+            'author_id' => Auth::user()->id]);
+        return  redirect()->route('articles.index')->with('success', 'Article created successfully');
 
+    }
     /**
      * Display the specified resource.
-     */
+        */
     public function show(Article $article)
     {
         //
