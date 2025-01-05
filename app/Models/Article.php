@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Sluggable\SlugOptions;
+use Spatie\Sluggable\HasSlug;
 
 class Article extends Model
-{
-   protected $fillable = [
+{  
+    use HasFactory, HasSlug;
+
+    protected $fillable = [
     'title', 
     'slug',
     'image',
@@ -19,15 +24,15 @@ class Article extends Model
     'category_id',
     'author_id'];
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
 
-    public function getRouteKeyName(): string
+    public function imageUrl(): string
     {
-        return 'slug';
+        return Storage::url($this->image);
     }
 }
