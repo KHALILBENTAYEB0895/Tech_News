@@ -38,15 +38,20 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {   $imagePath = null;
         
-        if($request->hasFile('image') && $request->file('image')->isValid()){
+        if($request->hasFile('image') && $request->file('image')->isValid())
+        {
             $imagePath = $request->file('image')->store('articles', 'public');
         }
-            
-        Article::create($request->validated() +[
-            'image' => $imagePath,
-            'author_id' => Auth::user()->id]);
-        return  redirect()->route('articles.index')->with('success', 'Article created successfully');
 
+        $validatedData = $request->validated();
+        $validatedData['image'] = $imagePath;
+            
+        Article::create($validatedData +[
+            'author_id' => Auth::user()->id
+        ]);
+           
+        return  redirect()->route('articles.index')->with('success', 'Article created successfully');
+        
     }
     /**
      * Display the specified resource.

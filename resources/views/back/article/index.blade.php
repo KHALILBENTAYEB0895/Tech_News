@@ -38,7 +38,7 @@
                             @foreach ($articles as $article)
                             <tr>
                                 <td>{{ $article->id }}</td>
-                                <td>{{ $article->image }}</td>
+                                <td><img src="{{ $article->imageUrl() }}"></td>
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->category->name }}</td>
                                 <td>21-03-2020</td>
@@ -46,14 +46,14 @@
                                     <div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">{{ $article->isActive ? 'activated' : 'disabled' }}</a> </div>
                                 </td>
                                 <td>
-                                <div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">{{ $article->isSharable ? 'activated' : 'disabled' }}</a> </div>
+                                <div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">{{ $article->isSharable ? 'Published' : 'Not published' }}</a> </div>
                                 </td>
                                 <td>
-                                <div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">{{ $article->isComment ? 'activated' : 'disabled' }}</a> </div>
+                                <div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">{{ $article->isComment ? 'Commented' : 'Uncommented' }}</a> </div>
                                 </td>
                                 <td>
                                     <h2 class="table-avatar">
-                                    <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-03.jpg" alt="User Image"></a>
+                                    <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{ asset('back_auth/assets/profile/'.$article->author->image) }}" alt="User Image"></a>
                                     <a href="profile.html">{{ $article->author->name }} <span>{{ $article->author->id }}</span></a>
                                     </h2>
                                 </td>

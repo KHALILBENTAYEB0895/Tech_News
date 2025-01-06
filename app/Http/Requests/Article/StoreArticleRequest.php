@@ -24,7 +24,7 @@ class StoreArticleRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['string', 'required'],
-            'image' => ['file', 'nullable', 'mimes:png,jpg,jpeg', 'max:2048'],
+            'image' => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:2048'],
             'isActive' => ['boolean'],
             'isComment' => ['boolean'],
             'isSharable' => ['boolean'],
