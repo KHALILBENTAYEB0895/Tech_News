@@ -17,7 +17,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('back.article.index');
+        return view('back.article.index', [
+            'articles' => Article::all()
+        ]);
     }
 
     /**
@@ -36,7 +38,7 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {   $imagePath = null;
         
-        if($request->hasFile('image')){
+        if($request->hasFile('image') && $request->file('image')->isValid()){
             $imagePath = $request->file('image')->store('articles', 'public');
         }
             
