@@ -38,7 +38,7 @@
                             @foreach ($articles as $article)
                             <tr>
                                 <td>{{ $article->id }}</td>
-                                <td><img class="avatar rounded" src="{{ $article->imageUrl() }}" alt="Article Image"></td>
+                                <td><img class=" w-75" src="{{ $article->imageUrl() }}" alt="Article Image"></td>
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->category->name }}</td>
                                 <td>21-03-2020</td>
@@ -63,7 +63,7 @@
                                             <i class="fas fa-ellipsis-v ellipse_color"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right"> 
-                                            <a class="dropdown-item" href="edit-article.html">
+                                            <a class="dropdown-item" href="{{ route('articles.show', $article) }}">
                                                 <i class="fas fa-pencil-alt m-r-5"></i> See
                                             </a>
                                             <a class="dropdown-item" href="edit-article.html">
