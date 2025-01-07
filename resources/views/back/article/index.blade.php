@@ -38,7 +38,7 @@
                             @foreach ($articles as $article)
                             <tr>
                                 <td>{{ $article->id }}</td>
-                                <td><img src="{{ $article->imageUrl() }}"></td>
+                                <td><img class="avatar rounded" src="{{ $article->imageUrl() }}" alt="Article Image"></td>
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->category->name }}</td>
                                 <td>21-03-2020</td>
@@ -53,7 +53,7 @@
                                 </td>
                                 <td>
                                     <h2 class="table-avatar">
-                                    <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{ asset('back_auth/assets/profile/'.$article->author->image) }}" alt="User Image"></a>
+                                    <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{ asset('back_auth/assets/profile/'.$article->author->picture) }}" alt="User Image"></a>
                                     <a href="profile.html">{{ $article->author->name }} <span>{{ $article->author->id }}</span></a>
                                     </h2>
                                 </td>
