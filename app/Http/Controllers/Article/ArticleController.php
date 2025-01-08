@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\UpdateArticleRequest;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -72,7 +71,10 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('back.article.create', [
+            'article' => $article,
+            'categories' => Category::where('isActive', 1)->get()
+        ]);
     }
 
     /**
@@ -80,7 +82,23 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        //
+        
+        $imagePath = $article->image ?? null;
+        
+        if($request->hasFile('image') && $request->file('image')->isValid())
+        {
+            $imagePath = $request->file('image')->store('articles', 'public');
+        }
+
+        $validatedData = $request->validated();
+        $validatedData['image'] = $imagePath;
+        
+        $tags = explode(',', $request->tags);
+        
+        $article->update($validatedData);
+        $article->retag($tags);
+        
+        return redirect()->route('articles.index')->with('success', 'Article updated successfully');
     }
 
     /**
