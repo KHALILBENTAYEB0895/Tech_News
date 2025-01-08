@@ -18,3 +18,20 @@ href="{{ asset('back_auth/assets/plugins/fontawesome/css/fontawesome.min.css') }
  integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
   crossorigin="anonymous" referrerpolicy="no-referrer" 
 />
+
+<style>
+  .bootstrap-taginput .tag {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+
+  .bootstrap-taginput{
+    width: 100%;
+  }
+</style>

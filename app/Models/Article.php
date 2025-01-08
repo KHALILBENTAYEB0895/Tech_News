@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Conner\Tagging\Taggable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,7 +12,7 @@ use Spatie\Sluggable\HasSlug;
 
 class Article extends Model
 {  
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, Taggable;
 
     protected $fillable = [
     'title', 

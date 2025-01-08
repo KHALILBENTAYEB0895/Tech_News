@@ -46,9 +46,13 @@ class ArticleController extends Controller
         $validatedData = $request->validated();
         $validatedData['image'] = $imagePath;
             
-        Article::create($validatedData +[
+        $tags = explode(',', $request->tags);
+        
+        $article = Article::create($validatedData +[
             'author_id' => Auth::user()->id
         ]);
+
+        $article->tag($tags);
            
         return  redirect()->route('articles.index')->with('success', 'Article created successfully');
         
