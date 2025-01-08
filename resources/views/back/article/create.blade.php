@@ -5,7 +5,13 @@
 @section('dashboard-header')
 <div class="row align-items-center">
     <div class="col">
-        <h3 class="page-title mt-5">Modifier un article</h3>
+        <h3 class="page-title mt-5">
+            @if (isset($article))
+            Edit Article
+             @else
+            Add Article
+            @endif
+        </h3>
     </div>
 </div>
 @endsection
@@ -13,9 +19,20 @@
 @section('dashboard-content')
 <div class="row">
     <div class="col-lg-12">
-        <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
+        <form action=" {{ isset($article) ? route('articles.update', $article) : route('articles.store') }} "
+         method="POST" enctype="multipart/form-data"
+        >
         @csrf
+        @if (isset($article))
+            @method('PUT')
+        @endif
             <div class="row formtype">
+                @if (@isset($article))
+                <div class="col-12">
+                    <img class="w-25" src="{{ $article->imageUrl() }}" alt="">
+                    <p>{{ $article->image }}</p>
+                </div>
+                @endif
                 <div class="col-md-4">
                     <div class="form-group">
                     <label>Article title</label>
@@ -23,6 +40,7 @@
                         class="form-control"
                         type="text"
                         name="title"
+                        value="{{ isset($article) ? old('title', $article->title) : '' }}"
                     />
                     </div>
                 </div>
@@ -53,7 +71,8 @@
                         class="form-control"
                         rows="5"
                         id="comment"
-                        name="description">   
+                        name="description"
+                        >{{ isset($article) ? old('description', $article->description) : '' }}
                 </textarea>
 
                 <div class="col-md-4">

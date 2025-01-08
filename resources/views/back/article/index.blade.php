@@ -66,7 +66,7 @@
                                             <a class="dropdown-item" href="{{ route('articles.show', $article) }}">
                                                 <i class="fas fa-pencil-alt m-r-5"></i> See
                                             </a>
-                                            <a class="dropdown-item" href="edit-article.html">
+                                            <a class="dropdown-item" href="{{ route('articles.edit', $article) }}">
                                                 <i class="fas fa-pencil-alt m-r-5"></i> Edit
                                             </a> 
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete
