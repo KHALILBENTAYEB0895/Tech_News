@@ -69,8 +69,11 @@
                                             <a class="dropdown-item" href="{{ route('articles.edit', $article) }}">
                                                 <i class="fas fa-pencil-alt m-r-5"></i> Edit
                                             </a> 
-                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete
-                                            </a> 
+                                            <form action="{{ route('articles.destroy', $article) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt m-r-5"></i> Delete</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>
