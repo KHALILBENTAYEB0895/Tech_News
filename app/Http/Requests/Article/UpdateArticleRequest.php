@@ -28,7 +28,8 @@ class UpdateArticleRequest extends FormRequest
             'isActive' => ['boolean'],
             'isComment' => ['boolean'],
             'isSharable' => ['boolean'],
-            'category_id' => ['required', 'integer']
+            'category_id' => ['required', 'integer'],
+            'tags' => ['string', 'nullable']
         ];
     }
 }

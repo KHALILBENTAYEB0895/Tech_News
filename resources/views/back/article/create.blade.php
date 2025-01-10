@@ -68,12 +68,33 @@
                 </div>
 
                 <textarea
-                        class="form-control"
-                        rows="5"
-                        id="comment"
-                        name="description"
-                        >{{ isset($article) ? old('description', $article->description) : '' }}
+                    class="form-control"
+                    rows="5"
+                    id="comment"
+                    name="description"
+                >
+                    {{ isset($article) ? old('description', $article->description) : '' }}
                 </textarea>
+
+                @if(isset($article))
+                    <div class="col-md-12">
+                        @foreach ($article->tags as $tag)
+                            <label class="label label-info btn btn-primary"> {{ $tag->name }}</label>
+                        @endforeach
+                    </div>
+                @endif
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="tags"
+                         name="tags"
+                          value="{{ isset($article) ? old('tags', $article->tags->pluck('name')->implode(',')) : '' }}"
+                         placeholder="Enter tags separated by commas"
+                        >
+                    </div>
+                </div>
+
+
 
                 <div class="col-md-4">
                     <div class="form-group">
