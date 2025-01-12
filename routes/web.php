@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Article\ArticleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,6 +27,10 @@ Route::resource('categories', CategoryController::class);
 //Article Routes
 
 Route::resource('articles', ArticleController::class);
+
+//User Routes
+
+Route::resource('authors', UserController::class);
 
 //Auth Routes
 

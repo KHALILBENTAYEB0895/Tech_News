@@ -41,7 +41,7 @@
               <span class="menu-arrow"></span
             ></a>
             <ul class="submenu_class" style="display: none">
-              <li><a href="all-author.html">Tous les auteurs </a></li>
+              <li><a href="{{ route('authors.index') }}">Tous les auteurs </a></li>
               <li>
                 <a href="add-author.html"> Ajouter un auteur </a>
               </li>
