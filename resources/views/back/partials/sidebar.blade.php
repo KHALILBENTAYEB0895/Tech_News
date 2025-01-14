@@ -19,6 +19,7 @@
               <li><a href="{{ route('articles.create') }}"> Ajouter un article </a></li>
             </ul>
           </li>
+          @can('admin-access')
           <li class="submenu">
             <a href="#"
               ><i class="fas fa-book"></i> <span> Catégories </span>
@@ -94,6 +95,7 @@
               <li><a href="blank-page.html">Blank Page </a></li>
             </ul>
           </li>
+          @endcan
         </ul>
       </div>
     </div>
