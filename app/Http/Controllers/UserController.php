@@ -13,7 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('back.author.index');
+        return view('back.author.index', [
+            'authors' => User::where('role', 'author')->get()
+        ]);
     }
 
     /**
@@ -21,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.author.create');
     }
 
     /**
@@ -29,7 +31,10 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
+        User::create($request->validated() +[
+            'password' => 'author123'
+        ]);
+        return redirect()->route('authors.index')->with('success', 'Author created successfully');
     }
 
     /**
@@ -43,24 +48,29 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(User $author)
     {
-        //
+        return view('back.author.create', [
+            'author' => $author
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request, User $author)
     {
-        //
+        
+        $author->update($request->validated());
+        return redirect()->route('authors.index')->with('success', 'Author updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $author)
     {
-        //
+        $author->delete();
+        return redirect()->route('authors.index')->with('success', 'Author deleted successfully');
     }
 }

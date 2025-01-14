@@ -43,7 +43,7 @@
             <ul class="submenu_class" style="display: none">
               <li><a href="{{ route('authors.index') }}">Tous les auteurs </a></li>
               <li>
-                <a href="add-author.html"> Ajouter un auteur </a>
+                <a href="{{ route('authors.create') }}"> Ajouter un auteur </a>
               </li>
             </ul>
           </li>

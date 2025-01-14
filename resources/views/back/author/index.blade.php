@@ -8,7 +8,7 @@
       <div class="mt-5">
         <h4 class="card-title float-left mt-2">Les Auteurs</h4>
         <a
-          href="add-staff.html"
+          href="{{ route('authors.create') }}"
           class="btn btn-primary float-right veiwbutton"
           >Ajouter un auteur</a
         >
@@ -35,8 +35,9 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($authors as $author)
                 <tr>
-                  <td>AUT-001</td>
+                  <td>{{ $author->id }}</td>
                   <td>
                     <h2 class="table-avatar">
                       <a
@@ -44,14 +45,14 @@
                         class="avatar avatar-sm mr-2"
                         ><img
                           class="avatar-img rounded-circle"
-                          src="assets/img/profiles/avatar-03.jpg"
+                          src="{{ asset('back_auth/assets/img/profile/'.$author->picture) }}"
                           alt="User Image"
                       /></a>
-                      <a href="profile.html">David Alvarez </a>
+                      <a href="profile.html">{{ $author->name }}</a>
                     </h2>
                   </td>
 
-                  <td>email@gmail.com</td>
+                  <td>{{ $author->email }}</td>
 
                   <td class="text-right">
                     <div class="dropdown dropdown-action">
@@ -63,22 +64,21 @@
                         ><i class="fas fa-ellipsis-v ellipse_color"></i
                       ></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="edit-staff.html"
+                        <a class="dropdown-item" href="{{ route('authors.edit', $author) }}"
                           ><i class="fas fa-pencil-alt m-r-5"></i>
-                          Modifier</a
+                          Edit</a
                         >
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#delete_asset"
-                          ><i class="fas fa-trash-alt m-r-5"></i>
-                          Supprimer</a
-                        >
+                        <form action="{{ route('authors.destroy', $author) }}" method="POST" style="display:inline;">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt m-r-5"></i> Delete</button>
+                       </form>
                       </div>
                     </div>
                   </td>
                 </tr>
+                @endforeach
+                
               </tbody>
             </table>
           </div>
