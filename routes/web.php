@@ -32,7 +32,7 @@ Route::resource('articles', ArticleController::class);
 
 //User Routes
 
-Route::resource('authors', UserController::class);
+Route::resource('authors', UserController::class)->middleware(Admin::class);
 
 //Auth Routes
 
